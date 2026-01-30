@@ -221,6 +221,20 @@
             right: 0;
         }
 
+        @media (max-width: 768px) {
+            .carousel-track {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                /* FORCE 2 columns */
+                gap: 16px;
+            }
+
+            .course-card {
+                width: 100%;
+            }
+        }
+
+
         /* ---------- WHO IT’S FOR ---------- */
         .audience {
             background-color: #fdfaf5;
