@@ -244,8 +244,7 @@
 
     /* WHY HEIT'S POINT + INDOOR EDUCATION */
     .why-heits-point {
-      background:
-        linear-gradient(to bottom, #fffdf8, #fdf8ee);
+      background: linear-gradient(to bottom, #fffdf8, #fdf8ee);
       padding: 62px 8%;
       border-top: 1px solid #e8dfd1;
       border-bottom: 1px solid #e8dfd1;
@@ -605,6 +604,44 @@
       right: -46px;
     }
 
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    .carousel-dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 999px;
+      border: none;
+      background: #d9d2c4;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      padding: 0;
+    }
+
+    .carousel-dot:hover {
+      transform: scale(1.12);
+      background: #bfb39d;
+    }
+
+    .carousel-dot.active {
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(47, 93, 58, 0.14);
+    }
+
+    .carousel-help {
+      text-align: center;
+      margin-top: 10px;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
     /* ADDITIONAL */
     .additional {
       background: linear-gradient(to bottom, #fdfaf5, #f6efe4);
@@ -950,6 +987,38 @@
       .carousel-arrow {
         display: none;
       }
+
+      .carousel-viewport {
+        overflow-x: auto;
+        overflow-y: visible;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+      }
+
+      .carousel-viewport::-webkit-scrollbar {
+        display: none;
+      }
+
+      .carousel-track {
+        transition: none;
+        transform: none !important;
+      }
+
+      .course-card {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+      }
+
+      .carousel-help {
+        display: block;
+      }
+    }
+
+    @media (min-width: 501px) {
+      .carousel-help {
+        display: none;
+      }
     }
 
     @media (hover: none) {
@@ -1089,8 +1158,6 @@
             <li>Great preview before scheduling an overnight trip</li>
           </ul>
         </div>
-
-      
       </div>
     </div>
   </section>
@@ -1153,13 +1220,18 @@
 
     <div class="carousel-container">
       <button class="carousel-arrow left" aria-label="Previous course">&lt;</button>
+
       <div class="carousel-viewport">
         <div class="course-nudge">
           <div class="carousel-track"></div>
         </div>
       </div>
+
       <button class="carousel-arrow right" aria-label="Next course">&gt;</button>
     </div>
+
+    <div class="carousel-dots" aria-label="Course navigation"></div>
+    <div class="carousel-help">Swipe left or right to see more courses</div>
   </section>
 
   <section class="additional">
@@ -1238,80 +1310,73 @@
     </p>
     <div id="toast"></div>
   </section>
-<footer style="background:linear-gradient(135deg,#1f3b2d,#2e5a43); color:#f5f1e8; padding:35px 15px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-  <div style="max-width:1100px; margin:0 auto;">
 
-    <!-- Title -->
-    <div style="text-align:center; margin-bottom:25px;">
-      <h2 style="margin:0; font-size:26px; letter-spacing:1px; color:#f3d58a;">
-        HEIT'S POINT LUTHERAN MINISTRIES
-      </h2>
-    </div>
+  <footer style="background:linear-gradient(135deg,#1f3b2d,#2e5a43); color:#f5f1e8; padding:35px 15px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div style="max-width:1100px; margin:0 auto;">
 
-    <!-- Content -->
-    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:25px; font-size:14px;">
-
-      <!-- Mission -->
-      <div style="flex:1; min-width:220px;">
-        <h3 style="margin-bottom:8px; font-size:16px; color:#f3d58a;">Mission</h3>
-        <p style="margin:0; line-height:1.6;">
-          Strengthening your Connection with Christ, the Vine
-        </p>
-        <p style="margin-top:4px; font-size:13px; color:#d8c9a8;">
-          John 15:5
-        </p>
+      <div style="text-align:center; margin-bottom:25px;">
+        <h2 style="margin:0; font-size:26px; letter-spacing:1px; color:#f3d58a;">
+          HEIT'S POINT LUTHERAN MINISTRIES
+        </h2>
       </div>
 
-      <!-- Contact -->
-      <div style="flex:1; min-width:220px;">
-        <h3 style="margin-bottom:8px; font-size:16px; color:#f3d58a;">Contact</h3>
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:25px; font-size:14px;">
 
-        <p style="margin:0 0 6px;">
-          28345 Heits Point Ave.<br>
-          Lincoln, MO 65338
-        </p>
+        <div style="flex:1; min-width:220px;">
+          <h3 style="margin-bottom:8px; font-size:16px; color:#f3d58a;">Mission</h3>
+          <p style="margin:0; line-height:1.6;">
+            Strengthening your Connection with Christ, the Vine
+          </p>
+          <p style="margin-top:4px; font-size:13px; color:#d8c9a8;">
+            John 15:5
+          </p>
+        </div>
 
-        <p style="margin:0 0 6px;">
-          <a href="tel:6606682363" style="color:#f5f1e8; text-decoration:none;">
-            📞 660-668-2363
+        <div style="flex:1; min-width:220px;">
+          <h3 style="margin-bottom:8px; font-size:16px; color:#f3d58a;">Contact</h3>
+
+          <p style="margin:0 0 6px;">
+            28345 Heits Point Ave.<br>
+            Lincoln, MO 65338
+          </p>
+
+          <p style="margin:0 0 6px;">
+            <a href="tel:6606682363" style="color:#f5f1e8; text-decoration:none;">
+              📞 660-668-2363
+            </a>
+          </p>
+
+          <p style="margin:0;">
+            <a href="mailto:info@heitspointlutheran.org" style="color:#f5f1e8; text-decoration:none;">
+              ✉️ info@heitspointlutheran.org
+            </a>
+          </p>
+        </div>
+
+        <div style="flex:1; min-width:180px;">
+          <h3 style="margin-bottom:8px; font-size:16px; color:#f3d58a;">Follow</h3>
+
+          <a href="https://www.facebook.com/heitspointlutherancamp" target="_blank"
+             style="display:flex; align-items:center; gap:8px; margin-bottom:8px; text-decoration:none; color:#f5f1e8;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9v-2.9h2.6V9.4c0-2.6 1.5-4 3.8-4 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.7-1.6 1.5v1.8h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+            </svg>
+            Facebook
           </a>
-        </p>
 
-        <p style="margin:0;">
-          <a href="mailto:info@heitspointlutheran.org" style="color:#f5f1e8; text-decoration:none;">
-            ✉️ info@heitspointlutheran.org
+          <a href="https://www.instagram.com/heitspointlutheran/" target="_blank"
+             style="display:flex; align-items:center; gap:8px; text-decoration:none; color:#f5f1e8;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 9A3.5 3.5 0 1 1 15.5 13 3.5 3.5 0 0 1 12 16.5zM17.8 6.2a1.2 1.2 0 1 0 1.2 1.2 1.2 1.2 0 0 0-1.2-1.2z"/>
+            </svg>
+            Instagram
           </a>
-        </p>
+
+        </div>
       </div>
-
-      <!-- Social -->
-      <div style="flex:1; min-width:180px;">
-        <h3 style="margin-bottom:8px; font-size:16px; color:#f3d58a;">Follow</h3>
-
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/heitspointlutherancamp" target="_blank"
-           style="display:flex; align-items:center; gap:8px; margin-bottom:8px; text-decoration:none; color:#f5f1e8;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9v-2.9h2.6V9.4c0-2.6 1.5-4 3.8-4 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.7-1.6 1.5v1.8h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
-          </svg>
-          Facebook
-        </a>
-
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/heitspointlutheran/" target="_blank"
-           style="display:flex; align-items:center; gap:8px; text-decoration:none; color:#f5f1e8;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 9A3.5 3.5 0 1 1 15.5 13 3.5 3.5 0 0 1 12 16.5zM17.8 6.2a1.2 1.2 0 1 0 1.2 1.2 1.2 1.2 0 0 0-1.2-1.2z"/>
-          </svg>
-          Instagram
-        </a>
-
-      </div>
-
     </div>
+  </footer>
 
-  </div>
-</footer>
   <script>
     const copyButtons = document.querySelectorAll('.copy-btn');
     const toast = document.getElementById('toast');
@@ -1391,11 +1456,21 @@
     ];
 
     const carouselTrack = document.querySelector('.carousel-track');
+    const carouselViewport = document.querySelector('.carousel-viewport');
     const leftBtn = document.querySelector('.carousel-arrow.left');
     const rightBtn = document.querySelector('.carousel-arrow.right');
     const courseNudge = document.querySelector('.course-nudge');
-    const visibleCards = 2;
+    const dotsContainer = document.querySelector('.carousel-dots');
+
     let currentIndex = 0;
+
+    function getVisibleCards() {
+      return window.innerWidth <= 768 ? 1 : 2;
+    }
+
+    function isMobileSwipeMode() {
+      return window.innerWidth <= 500;
+    }
 
     courses.forEach(course => {
       const card = document.createElement('div');
@@ -1427,41 +1502,113 @@
       carouselTrack.appendChild(card);
     });
 
+    function getSlideCount() {
+      const visibleCards = getVisibleCards();
+      return Math.ceil(courses.length / visibleCards);
+    }
+
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const totalDots = getSlideCount();
+
+      for (let i = 0; i < totalDots; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Go to course slide ${i + 1}`);
+
+        dot.addEventListener('click', () => {
+          if (isMobileSwipeMode()) {
+            const cards = document.querySelectorAll('.course-card');
+            if (!cards.length) return;
+            const targetCard = cards[i];
+            if (!targetCard) return;
+
+            carouselViewport.scrollTo({
+              left: targetCard.offsetLeft,
+              behavior: 'smooth'
+            });
+          } else {
+            currentIndex = i * getVisibleCards();
+            updateCarousel();
+          }
+        });
+
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots(activeDotIndex) {
+      const dots = dotsContainer.querySelectorAll('.carousel-dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === activeDotIndex);
+      });
+    }
+
     function updateCarousel() {
       const cards = Array.from(document.querySelectorAll('.course-card'));
       if (!cards.length) return;
+
+      if (isMobileSwipeMode()) {
+        carouselTrack.style.transform = 'translateX(0)';
+        const mobileIndex = Math.round(carouselViewport.scrollLeft / carouselViewport.clientWidth);
+        updateDots(Math.max(0, Math.min(mobileIndex, getSlideCount() - 1)));
+        return;
+      }
+
+      const visibleCards = getVisibleCards();
+      const maxIndex = Math.max(0, cards.length - visibleCards);
+
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+      if (currentIndex < 0) currentIndex = 0;
+
       const cardWidth = cards[0].offsetWidth + 20;
       const offset = currentIndex * cardWidth;
       carouselTrack.style.transform = `translateX(-${offset}px)`;
+
+      const activeDot = Math.floor(currentIndex / visibleCards);
+      updateDots(activeDot);
     }
 
     rightBtn.addEventListener('click', () => {
-      const totalCards = courses.length;
+      if (isMobileSwipeMode()) return;
+
+      const visibleCards = getVisibleCards();
+      const maxIndex = Math.max(0, courses.length - visibleCards);
+
       currentIndex += visibleCards;
-      if (currentIndex >= totalCards) currentIndex = 0;
+      if (currentIndex > maxIndex) currentIndex = 0;
+
       updateCarousel();
     });
 
     leftBtn.addEventListener('click', () => {
-      const totalCards = courses.length;
+      if (isMobileSwipeMode()) return;
+
+      const visibleCards = getVisibleCards();
+      const maxIndex = Math.max(0, courses.length - visibleCards);
+
       currentIndex -= visibleCards;
-      if (currentIndex < 0) currentIndex = totalCards - visibleCards;
-      if (currentIndex < 0) currentIndex = 0;
+      if (currentIndex < 0) currentIndex = maxIndex;
+
       updateCarousel();
     });
 
     function wireCourseHoverEffects() {
       document.querySelectorAll('.course-card').forEach(card => {
         card.addEventListener('mouseenter', () => {
+          if (window.matchMedia('(hover: none)').matches) return;
+
           const cards = Array.from(courseNudge.querySelectorAll('.course-card'));
-          const firstVisible = cards.findIndex(c => c.offsetParent !== null);
-          const lastVisible = cards.length - 1 - [...cards].reverse().findIndex(c => c.offsetParent !== null);
           const index = cards.indexOf(card);
 
           courseNudge.classList.remove('nudge-left', 'nudge-right');
 
-          if (index === firstVisible) courseNudge.classList.add('nudge-right');
-          else if (index === lastVisible) courseNudge.classList.add('nudge-left');
+          if (index === currentIndex) {
+            courseNudge.classList.add('nudge-right');
+          } else if (index === currentIndex + getVisibleCards() - 1) {
+            courseNudge.classList.add('nudge-left');
+          }
         });
 
         card.addEventListener('mouseleave', () => {
@@ -1470,9 +1617,24 @@
       });
     }
 
+    let mobileScrollTimer;
+    carouselViewport.addEventListener('scroll', () => {
+      if (!isMobileSwipeMode()) return;
+
+      clearTimeout(mobileScrollTimer);
+      mobileScrollTimer = setTimeout(() => {
+        updateCarousel();
+      }, 60);
+    });
+
+    buildDots();
     wireCourseHoverEffects();
     updateCarousel();
-    window.addEventListener('resize', updateCarousel);
+
+    window.addEventListener('resize', () => {
+      buildDots();
+      updateCarousel();
+    });
   </script>
 
   <script>
